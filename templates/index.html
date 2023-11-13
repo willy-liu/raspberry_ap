@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單的列表應用</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div id="list-container">
+        <ul id="item-list">
+            {% for item in items %}
+                <li onclick="openModal('{{ item }}')">{{ item }}</li>
+            {% endfor %}
+        </ul>
+        <button onclick="location.reload();">重整列表</button>
+        <button onclick="window.location.href='/remove_all_network';">清除所有已紀錄的wifi</button>
+        <button onclick="window.location.href='/open_wifi';">關閉AP並開啟wifi</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>請輸入<span id="selected-item">的密碼</span></p>
+            <input type="password" id="password" placeholder="輸入密碼">
+            <input type="checkbox" id="show-password"> 顯示密碼
+            <button onclick="submitData()">確認</button>
+        </div>
+    </div>
+</body>
+</html>

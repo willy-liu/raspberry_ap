@@ -1,0 +1,27 @@
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=TW
+
+network={
+	ssid="ICMNLAB3"
+	psk="ndhuicmn@D307"
+	key_mgmt=WPA-PSK
+}
+
+network={
+	ssid=e59186e59186
+	psk="01061004"
+	key_mgmt=WPA-PSK
+}
+
+network={
+	ssid="willy"
+	psk="aa01061004"
+	key_mgmt=WPA-PSK
+}
+
+network={
+	ssid="willy_2.4"
+	psk="01061004"
+	key_mgmt=WPA-PSK
+}

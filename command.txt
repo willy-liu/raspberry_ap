@@ -1,0 +1,37 @@
+# 開啟熱點
+sudo systemctl start hostapd
+sudo systemctl start dnsmasq
+
+# 關閉熱點
+sudo systemctl stop hostapd
+sudo systemctl stop dnsmasq
+
+# 重起wlan 0
+sudo ifconfig wlan0 down
+sudo ifconfig wlan0 up
+
+# 重起dhcpcd
+sudo service dhcpcd restart
+
+# dhcpcd設定檔
+sudo nano /etc/dhcpcd.conf
+
+
+###### 關閉熱點開wifi順序
+# 關閉AP
+sudo systemctl stop hostapd
+sudo systemctl stop dnsmasq
+# 將dhcpcd.conf的指令註解掉
+sudo nano /etc/dhcpcd.conf
+# 重新啟動dhcpcd
+sudo service dhcpcd restart
+
+###### 關閉wifi開啟熱點順序
+# 把dhcpcd.conf的註解刪掉
+sudo nano /etc/dhcpcd.conf
+# 重起dhcpcd
+sudo service dhcpcd restart
+# 開啟AP
+sudo systemctl start hostapd
+sudo systemctl start dnsmasq
+
